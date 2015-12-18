@@ -1,4 +1,4 @@
-.idea
+.idea/vcs.xml
 *.iml
 .gradle
 /local.properties
