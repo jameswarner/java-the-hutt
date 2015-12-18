@@ -27,7 +27,7 @@ public class JavaTheHutt extends AppCompatActivity implements View.OnClickListen
         mListView = (ViewGroup) findViewById(R.id.list);
 
         addDemo("Login", LoginActivity.class);
-        //addDemo("Plan Route", MapActivity.class);
+        addDemo("Plan Route", MapsActivity.class);
         addDemo("Begin Trip", BeginTripActivity.class);
         addDemo("Collect Data", CollectDataActivity.class);
         addDemo("Complete Trip", CompleteTripActivity.class);
