@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.mse.android.javathehutt"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mse.android.javathehutt">
 
     <application
         android:allowBackup="true"
@@ -13,11 +13,35 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".BeginTripActivity"
+            android:label="@string/title_activity_begin_trip"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CollectDataActivity"
+            android:label="@string/title_activity_collect_data"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CompleteTripActivity"
+            android:label="@string/title_activity_complete_trip"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MonitorTripActivity"
+            android:label="@string/title_activity_monitor_trip"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AnalTripsActivity"
+            android:label="@string/title_activity_anal_trips"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
