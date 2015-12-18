@@ -5,4 +5,32 @@
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.mse.android.javathehutt.MapsActivity" />
+    tools:context="com.mse.android.javathehutt.MapsActivity">
+    <Button
+        android:id="@+id/mark_departure"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_gravity="left|bottom"
+        android:text="Mark Departure"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:paddingRight="10dp"/>
+    <Button
+        android:id="@+id/mark_destination"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_gravity="center|bottom"
+        android:text="Mark Destination In Map"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:paddingRight="10dp"/>
+    <Button
+        android:id="@+id/done_map"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_gravity="right|bottom"
+        android:text="Done"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:paddingRight="10dp"/>
+</fragment>
