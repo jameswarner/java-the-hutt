@@ -14,7 +14,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Date;
 
 /**
  * Created by jamie2 on 12/15/15.
@@ -62,12 +65,25 @@ public class MonitorTripFragment extends Fragment {
             mTripClass = tripClass;
             mTitleTextView.setText(mTripClass.getVesselName());
             mTitleTextView.setTextColor(Color.GREEN);
-//            mDepartureDateTextView.setText(mTripClass.getDepartureDate().toString());
-            mDepartureDateTextView.setText("Dec-18-2015 20:00:00");
-            mDepartureDateTextView.setTextColor(Color.GREEN);
-//            mArrivalDateTextView.setText(mTripClass.getArrivalDate().toString());
-            mArrivalDateTextView.setText("Dec-20-2015 06:00:00");
-            mArrivalDateTextView.setTextColor(Color.GREEN);
+            Date date = mTripClass.getDepartDate();
+            System.out.println("raw date = "+date.toString());
+            Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String s = formatter.format(date);
+            mDepartureDateTextView.setText(s);
+            date = mTripClass.getReturnDate();
+            s = formatter.format(date);
+            mArrivalDateTextView.setText(s);
+            Date now = new Date();
+            if (now.compareTo(date)> 0)
+            {
+                mDepartureDateTextView.setTextColor(Color.rgb(255,0,0));
+                mArrivalDateTextView.setTextColor(Color.rgb(255,0,0));
+            }
+            else
+            {
+                mDepartureDateTextView.setTextColor(Color.rgb(0,255,50));
+                mArrivalDateTextView.setTextColor(Color.rgb(0,255,50));
+            }
             mTripCompleteCheckBox.setChecked(mTripClass.isCompleted());
 
         }
