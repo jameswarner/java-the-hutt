@@ -1,6 +1,8 @@
 package com.mse.android.javathehutt;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -16,11 +18,18 @@ import com.google.maps.android.kml.KmlLayer;
 
 import android.widget.Button;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.CompoundButton;
+
+import android.content.DialogInterface.OnClickListener;
 
 
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -28,9 +37,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Button doneButton;
     private Button markDestinationButton;
     private Button markDepartureButton;
-    private LatLng dutchHarbor = new LatLng(53.8898,166.5422);
+    private CheckBox iceOverlayCheckbox,radarOverlayCheckbox,tempOverlayCheckbox;
+    private LatLng dutchHarbor = new LatLng(53.88,166.54);
 
     private Marker departureMarker,destinationMarker;
+    private KmlLayer iceLayer;
     Context context;
 
     @Override
@@ -53,6 +64,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 MapDataSingleton.getInstance(MapsActivity.this)
                         .setSavedDestination(destinationMarker.getPosition());
                 MapsActivity.this.finish();
+//                MapDataSingleton.getInstance(MapsActivity.this)
+//                        .addDeparture("minnow",
+//                                departureMarker.getPosition(),
+//                                destinationMarker.getPosition());
+                MapDataSingleton instance = MapDataSingleton.getInstance(MapsActivity.this);
+                TripClass tripClass = instance.getTrip(instance.getLoginVesselname());
+                tripClass.setDeparturePosition(departureMarker.getPosition());
+                tripClass.setDestinationPosition(destinationMarker.getPosition());
+                TripClass testTrip = instance.getTrip(instance.getLoginVesselname());
+                System.out.println("MapsActivity departure position "+testTrip.getDeparturePosition().toString());
             }
         });
 
@@ -64,10 +85,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onClick(View view) {
                 LatLng center = mMap.getCameraPosition().target;
                 destinationMarker = mMap.addMarker(new MarkerOptions()
-                                        .position(center)
-                                        .title("Destination")
-                                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
-                                        .draggable(true));
+                        .position(center)
+                        .title("Destination")
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                        .draggable(true));
                 markDestinationButton.setEnabled(false);
                 doneButton.setEnabled(true);
             }
@@ -85,6 +106,48 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                         .draggable(true));
             markDepartureButton.setEnabled(false);
             markDestinationButton.setEnabled(true);
+            }
+        });
+
+        iceOverlayCheckbox = (CheckBox)findViewById(R.id.ice);
+        iceOverlayCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (true == isChecked) {
+                    try {
+                        iceLayer.addLayerToMap();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (XmlPullParserException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    mMap.clear();
+                }
+            }
+        });
+
+        radarOverlayCheckbox = (CheckBox)findViewById(R.id.radar);
+        radarOverlayCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (true == isChecked) {
+
+                } else {
+                }
+            }
+        });
+
+        tempOverlayCheckbox = (CheckBox)findViewById(R.id.temperature);
+        tempOverlayCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (true == isChecked)
+                {
+                }
+                else
+                {
+                }
             }
         });
     }
@@ -106,18 +169,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        mMap.addMarker(new MarkerOptions().position(cseds).title("Marker on CSEDS"));
         //mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         //Move the camera to the user's location and zoom in!
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(dutchHarbor, 9.0f),4000,null);
-/*
-        try {
-            KmlLayer layer = new KmlLayer(mMap,R.raw.arctic, getApplicationContext());
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(dutchHarbor, 7.0f),4000,null);
 
-            layer.addLayerToMap();
+        try {
+            iceLayer = new KmlLayer(mMap,R.raw.full_latest,getApplicationContext());
         }
         catch (XmlPullParserException e) {
             e.printStackTrace();
         } catch (IOException e){
             e.printStackTrace();
         }
-*/
     }
 }

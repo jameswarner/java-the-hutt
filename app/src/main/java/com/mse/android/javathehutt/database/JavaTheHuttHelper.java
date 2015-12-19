@@ -21,7 +21,7 @@ public class JavaTheHuttHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db)
     {
         db.execSQL("create table "+MapDBSchema.MapTable.name+"("+
-        "_id integer primary key auto_increment,"+
+        "_id integer primary key autoincrement, "+
                 MapDBSchema.MapTable.Cols.uuid+","+
         MapDBSchema.MapTable.Cols.departureLat+","+
         MapDBSchema.MapTable.Cols.departureLon+","+
