@@ -9,5 +9,4 @@
     <string name="title_activity_monitor_trip">MonitorTripActivity</string>
     <string name="title_activity_anal_trips">AnalTripsActivity</string>
     <string name="title_activity_maps">Map</string>
-    <string name="google_maps_key">AIzaSyDCwWoRO3QJltALEsU9AnYjWhcpQy5iFvw</string>
 </resources>
