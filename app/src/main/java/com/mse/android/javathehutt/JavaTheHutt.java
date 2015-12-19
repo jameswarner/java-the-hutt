@@ -13,6 +13,9 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.android.gms.maps.model.LatLng;
+
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,6 +49,72 @@ public class JavaTheHutt extends AppCompatActivity implements View.OnClickListen
         addDemo(A_ANALYZE, AnalTripsActivity.class);
 
         mButtonMap.get(A_LOGIN).setEnabled(true);
+
+        MapDataSingleton instance = MapDataSingleton.getInstance(JavaTheHutt.this);
+        TripClass tripClass = new TripClass("Northwestern");
+        tripClass.setDeparturePosition((new LatLng(51.0, 119.8)));
+        tripClass.setDestinationPosition((new LatLng(55.0, 119.0)));
+        tripClass.setCrewSize(3);
+        tripClass.setCompleted(false);
+        Date depart = new Date(2015,11,1);
+        depart.setHours(8);
+        depart.setMinutes(20);
+        depart.setSeconds(32);
+        Date ret = new Date(2015,11,20);
+        ret.setHours(12);
+        ret.setMinutes(10);
+        ret.setSeconds(45);
+        tripClass.setDepartDate(depart);
+        tripClass.setReturnDate(ret);
+        instance.addTrip(tripClass);
+        TripClass tripClass2 = new TripClass("Time Bandit");
+        tripClass2.setDeparturePosition((new LatLng(51.0, 110.8)));
+        tripClass2.setDestinationPosition((new LatLng(55.0, 120.0)));
+        tripClass2.setCrewSize(3);
+        tripClass2.setCompleted(false);
+        Date depart2 = new Date(2015,11,1);
+        depart2.setHours(8);
+        depart2.setMinutes(20);
+        depart2.setSeconds(32);
+        Date ret2 = new Date(2015,11,12);
+        ret2.setHours(12);
+        ret2.setMinutes(10);
+        ret2.setSeconds(45);
+        tripClass2.setDepartDate(depart2);
+        tripClass2.setReturnDate(ret2);
+        instance.addTrip(tripClass2);
+        TripClass tripClass3 = new TripClass("Cornelia Marie");
+        tripClass3.setDeparturePosition((new LatLng(52.0, 118.8)));
+        tripClass3.setDestinationPosition((new LatLng(53.0, 117.0)));
+        tripClass3.setCrewSize(9);
+        tripClass3.setCompleted(false);
+        Date depart3 = new Date(2015,11,5);
+        depart3.setHours(8);
+        depart3.setMinutes(20);
+        depart3.setSeconds(32);
+        Date ret3 = new Date(2015,11, 22);
+        ret3.setHours(12);
+        ret3.setMinutes(10);
+        ret3.setSeconds(45);
+        tripClass3.setDepartDate(depart3);
+        tripClass3.setReturnDate(ret3);
+        instance.addTrip(tripClass3);
+        TripClass tripClass4 = new TripClass("Wizard");
+        tripClass4.setDeparturePosition((new LatLng(50.0, 110.8)));
+        tripClass4.setDestinationPosition((new LatLng(53.0, 109.0)));
+        tripClass4.setCrewSize(4);
+        tripClass4.setCompleted(true);
+        Date depart4 = new Date(2015,11,10);
+        depart4.setHours(8);
+        depart4.setMinutes(20);
+        depart4.setSeconds(32);
+        Date ret4 = new Date(2015,11,15);
+        ret4.setHours(12);
+        ret4.setMinutes(10);
+        ret4.setSeconds(45);
+        tripClass4.setDepartDate(depart4);
+        tripClass4.setReturnDate(ret4);
+        instance.addTrip(tripClass4);
     }
 
     private void addDemo(String demoName, Class<? extends Activity> activityClass) {

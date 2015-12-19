@@ -64,7 +64,6 @@ public class MonitorTripFragment extends Fragment {
         public void bindTrip(TripClass tripClass) {
             mTripClass = tripClass;
             mTitleTextView.setText(mTripClass.getVesselName());
-            mTitleTextView.setTextColor(Color.GREEN);
             Date date = mTripClass.getDepartDate();
             System.out.println("raw date = "+date.toString());
             Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -74,15 +73,18 @@ public class MonitorTripFragment extends Fragment {
             s = formatter.format(date);
             mArrivalDateTextView.setText(s);
             Date now = new Date();
-            if (now.compareTo(date)> 0)
+
+            if (now.getDate() > date.getDate() && false == mTripClass.isCompleted())
             {
                 mDepartureDateTextView.setTextColor(Color.rgb(255,0,0));
                 mArrivalDateTextView.setTextColor(Color.rgb(255,0,0));
+                mTitleTextView.setTextColor(Color.rgb(255,0,0));
             }
             else
             {
                 mDepartureDateTextView.setTextColor(Color.rgb(0,255,50));
                 mArrivalDateTextView.setTextColor(Color.rgb(0,255,50));
+                mTitleTextView.setTextColor(Color.rgb(0,255,50));
             }
             mTripCompleteCheckBox.setChecked(mTripClass.isCompleted());
 
