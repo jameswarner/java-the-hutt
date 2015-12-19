@@ -33,4 +33,34 @@
         android:padding="10dp"
         android:layout_marginTop="20dp"
         android:paddingRight="10dp"/>
+    <CheckBox
+        android:id="@+id/ice"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_gravity="left|top"
+        android:text="Ice Overlay"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:paddingRight="10dp"
+        />
+    <CheckBox
+        android:id="@+id/radar"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_gravity="center|top"
+        android:text="Radar Overlay"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:paddingRight="10dp"
+        />
+    <CheckBox
+        android:id="@+id/temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_gravity="right|top"
+        android:text="Temperature Overlay"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:paddingRight="10dp"
+        />
 </fragment>
