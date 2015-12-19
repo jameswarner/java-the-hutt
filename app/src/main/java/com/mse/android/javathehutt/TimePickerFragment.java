@@ -38,13 +38,14 @@ public class TimePickerFragment extends DialogFragment
         final Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);
-        in_date.setHours(hour);
-        in_date.setMinutes(minute);
+
         return new TimePickerDialog(getActivity(), this, hour, minute, true);
     }
 
     public void onTimeSet(TimePicker view, int hour, int minute) {
         mButton.setText(hour + ":" + minute);
+        in_date.setHours(hour);
+        in_date.setMinutes(minute);
     }
 
 }
