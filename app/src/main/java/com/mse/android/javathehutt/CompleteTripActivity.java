@@ -57,7 +57,7 @@ public class CompleteTripActivity extends AppCompatActivity {
             mRetDate.setText(ret_date.getMonth() + "/" + ret_date.getDate() + "/" + (ret_date.getYear()+1900));
             mRetTime.setText(ret_date.getHours() + ":" + ret_date.getMinutes());
             trip.setReturnDate(ret_date);
-            trip.setmTripComplete(true);
+            trip.setCompleted(true);
         }
 
         finish();
