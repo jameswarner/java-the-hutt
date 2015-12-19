@@ -60,11 +60,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onClick(View view) {
                 MapsActivity.this.finish();
-//                MapDataSingleton.getInstance(MapsActivity.this)
-//                        .addDeparture("minnow",
-//                                departureMarker.getPosition(),
-//                                destinationMarker.getPosition());
                 MapDataSingleton instance = MapDataSingleton.getInstance(MapsActivity.this);
+                instance.setLoginVesselname("minnow");
+                TripClass tempTripClass = new TripClass("minnow");
+                instance.addTrip(tempTripClass);
                 TripClass tripClass = instance.getTrip(instance.getLoginVesselname());
                 tripClass.setDeparturePosition(departureMarker.getPosition());
                 tripClass.setDestinationPosition(destinationMarker.getPosition());

@@ -11,6 +11,15 @@ public class TripClass {
     private String vesselName;
     private LatLng destinationPosition;
     private LatLng departurePosition;
+    private boolean completed;
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
     private Integer mCrewSize;
     private Date mDepartDate;
     private Date mReturnDate;

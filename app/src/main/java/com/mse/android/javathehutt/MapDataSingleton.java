@@ -76,6 +76,7 @@ import java.util.UUID;
     {
         trips = new ArrayList<>();
         context = inputContext;
+        trips = new ArrayList<>();
     }
 
 }
