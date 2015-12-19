@@ -10,14 +10,21 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 
 import java.util.Calendar;
+import java.util.Date;
 
 
 public class DatePickerFragment extends DialogFragment
             implements DatePickerDialog.OnDateSetListener {
 
+    private Button mButton;
+
+    DatePickerFragment(Button in_button) {
+        mButton = in_button;
+    }
     @Override
     public Dialog onCreateDialog(Bundle saveInstanceState) {
         final Calendar c = Calendar.getInstance();
@@ -29,6 +36,6 @@ public class DatePickerFragment extends DialogFragment
     }
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
-        //do something
+        mButton.setText(month + "/" + day + "/" + year);
     }
 }

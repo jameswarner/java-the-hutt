@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
@@ -23,6 +24,12 @@ import java.util.Calendar;
 public class TimePickerFragment extends DialogFragment
     implements TimePickerDialog.OnTimeSetListener    {
 
+    private Button mButton;
+
+    TimePickerFragment (Button in_button) {
+        mButton = in_button;
+    }
+
     @Override
     public Dialog onCreateDialog(Bundle saveInstanceState) {
         final Calendar c = Calendar.getInstance();
@@ -33,7 +40,7 @@ public class TimePickerFragment extends DialogFragment
     }
 
     public void onTimeSet(TimePicker view, int hour, int minute) {
-        //do something
+        mButton.setText(hour + ":" + minute);
     }
 
 }
