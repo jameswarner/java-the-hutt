@@ -52,6 +52,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         .setSavedDeparture(departureMarker.getPosition());
                 MapDataSingleton.getInstance(MapsActivity.this)
                         .setSavedDestination(destinationMarker.getPosition());
+                MapsActivity.this.finish();
             }
         });
 
