@@ -11,6 +11,7 @@ import com.mse.android.javathehutt.database.MapCursorWrapper;
 import com.mse.android.javathehutt.database.MapDBSchema;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
     /**
@@ -34,6 +35,8 @@ import java.util.UUID;
     public void addTrip(TripClass mytrip) {
         trips.add(mytrip);
     }
+
+    public List<TripClass> getTrips(){return trips;};
 
     public TripClass getTrip(String name)
     {
