@@ -21,25 +21,13 @@ import java.util.UUID;
     private static MapDataSingleton mapDataSingleton;
         private String loginVesselname;
 
-    public LatLng getSavedDeparture() {
-        return savedDeparture;
-    }
-
-    public LatLng getSavedDestination() {
-        return savedDestination;
-    }
-
-    private LatLng savedDeparture;
-//    private SQLiteDatabase sqLiteDatabase;
+        //    private SQLiteDatabase sqLiteDatabase;
 //    private MapCursorWrapper mapCursorWrapper;
 //    private UUID uuid;
 //    private String whereClause;
 //    private String [] whereArgs;
         private ArrayList<TripClass> trips;
 
-    public void setSavedDestination(LatLng savedDestination) {
-        this.savedDestination = savedDestination;
-    }
 
 
 
@@ -60,9 +48,6 @@ import java.util.UUID;
         return null;
     }
 
-    public void setSavedDeparture(LatLng savedDeparture) {
-        this.savedDeparture = savedDeparture;
-    }
 
     private LatLng savedDestination;
     private Context context;
@@ -74,7 +59,7 @@ import java.util.UUID;
         return mapDataSingleton;
     }
 
-        public String getLoginTripname()
+        public String getLoginVesselname()
         {
             return loginVesselname;
         }

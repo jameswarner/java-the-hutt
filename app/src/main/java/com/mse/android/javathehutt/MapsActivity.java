@@ -29,6 +29,7 @@ import android.content.DialogInterface.OnClickListener;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -63,10 +64,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 MapDataSingleton.getInstance(MapsActivity.this)
                         .setSavedDestination(destinationMarker.getPosition());
                 MapsActivity.this.finish();
-                MapDataSingleton.getInstance(MapsActivity.this)
-                        .addDeparture("minnow",
-                                departureMarker.getPosition(),
-                                destinationMarker.getPosition());
+//                MapDataSingleton.getInstance(MapsActivity.this)
+//                        .addDeparture("minnow",
+//                                departureMarker.getPosition(),
+//                                destinationMarker.getPosition());
+                MapDataSingleton instance = MapDataSingleton.getInstance(MapsActivity.this);
+                TripClass tripClass = instance.getTrip(instance.getLoginVesselname());
+                tripClass.setDeparturePosition(departureMarker.getPosition());
+                tripClass.setDestinationPosition(destinationMarker.getPosition());
+                TripClass testTrip = instance.getTrip(instance.getLoginVesselname());
+                System.out.println("MapsActivity departure position "+testTrip.getDeparturePosition().toString());
             }
         });
 

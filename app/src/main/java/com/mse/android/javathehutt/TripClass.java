@@ -36,5 +36,7 @@ public class TripClass {
     public TripClass(String inputVesselName)
     {
         vesselName = inputVesselName;
+        destinationPosition = new LatLng(0.0,0.0);
+        departurePosition = new LatLng(0.0,0.0);
     }
 }
