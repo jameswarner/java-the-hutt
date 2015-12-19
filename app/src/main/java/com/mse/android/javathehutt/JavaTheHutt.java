@@ -33,18 +33,7 @@ public class JavaTheHutt extends AppCompatActivity implements View.OnClickListen
         addDemo("Complete Trip", CompleteTripActivity.class);
         addDemo("Monitor Trip", MonitorTripActivity.class);
         addDemo("Analyze Trips", AnalTripsActivity.class);
-
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-
-        //FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        //fab.setOnClickListener(new View.OnClickListener() {
-           // @Override
-           // public void onClick(View view) {
-         //       Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-             //           .setAction("Action", null).show();
-           // }
-        //});
+        MapDataSingleton.getInstance(JavaTheHutt.this);
     }
 
     private void addDemo(String demoName, Class<? extends Activity> activityClass) {
