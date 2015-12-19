@@ -59,10 +59,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             @Override
             public void onClick(View view) {
-                MapDataSingleton.getInstance(MapsActivity.this)
-                        .setSavedDeparture(departureMarker.getPosition());
-                MapDataSingleton.getInstance(MapsActivity.this)
-                        .setSavedDestination(destinationMarker.getPosition());
                 MapsActivity.this.finish();
 //                MapDataSingleton.getInstance(MapsActivity.this)
 //                        .addDeparture("minnow",

@@ -11,6 +11,7 @@ import com.mse.android.javathehutt.database.MapCursorWrapper;
 import com.mse.android.javathehutt.database.MapDBSchema;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.UUID;
 
     /**
@@ -71,6 +72,7 @@ import java.util.UUID;
 
     private MapDataSingleton(Context inputContext)
     {
+        trips = new ArrayList<>();
         context = inputContext;
     }
 

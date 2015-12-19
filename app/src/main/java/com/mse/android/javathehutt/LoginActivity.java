@@ -17,6 +17,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView mUsername;
     private EditText mPassword;
     private Button mLoginButton;
+    private EditText mVessel;
     private static final String LOGIN_VALIDATED =
             "com.mse.android.javathehutt.login.validated";
 
@@ -28,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         mUsername = (TextView) findViewById(R.id.login_username);
         mLoginButton = (Button) findViewById(R.id.login_button);
         mPassword = (EditText) findViewById(R.id.login_password);
+        mVessel = (EditText) findViewById(R.id.login_vessel_name_input);
 
         mUsername.addTextChangedListener(new TextWatcher() {
             @Override
@@ -38,6 +40,23 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 //Leave blank
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                mVessel.setEnabled(true);
+            }
+        });
+
+        mVessel.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
             }
 
             @Override
@@ -67,6 +86,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 setLoginValidated();
+                TripClass trip = new TripClass(mVessel.getText().toString());
+                MapDataSingleton.getInstance(LoginActivity.this).addTrip(trip);
+                MapDataSingleton.getInstance(LoginActivity.this).setLoginVesselname(mVessel.getText().toString());
                 finish();
             }
         });
