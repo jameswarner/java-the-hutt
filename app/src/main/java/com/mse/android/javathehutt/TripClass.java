@@ -23,7 +23,25 @@ public class TripClass {
     private Integer mCrewSize;
     private Date mDepartDate;
     private Date mReturnDate;
+    private Date mActualReturnDate;
     private String mReason;
+    private Boolean mTripComplete;
+
+    public Boolean getmTripComplete() {
+        return mTripComplete;
+    }
+
+    public void setmTripComplete(Boolean mTripComplete) {
+        this.mTripComplete = mTripComplete;
+    }
+
+    public Date getmActualReturnDate() {
+        return mActualReturnDate;
+    }
+
+    public void setmActualReturnDate(Date mActualReturnDate) {
+        this.mActualReturnDate = mActualReturnDate;
+    }
 
     public String getReason() {
         return mReason;
@@ -86,5 +104,6 @@ public class TripClass {
         vesselName = inputVesselName;
         destinationPosition = new LatLng(0.0,0.0);
         departurePosition = new LatLng(0.0,0.0);
+        setmTripComplete(false);
     }
 }
