@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DefaultButtonTheme" parent="android:Theme.Light">
+        <item name="android:textViewStyle">@style/AppTextViewStyle</item>
+        <item name="android:buttonStyle">@style/AppButtonStyle</item>
+    </style>
+
+    <style name="AppTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="AppButtonStyle" parent="android:Widget.Holo.Button">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+</resources>
