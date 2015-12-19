@@ -109,6 +109,7 @@ public class JavaTheHutt extends AppCompatActivity implements View.OnClickListen
                 for(Button btn: mButtonMap.values()) {
                     btn.setEnabled(true);
                 }
+                mButtonMap.get(A_ANALYZE).setEnabled(false);
             }
         }
 
