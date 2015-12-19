@@ -13,11 +13,22 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class JavaTheHutt extends AppCompatActivity implements View.OnClickListener {
 
     private ViewGroup mListView;
+    private static final int REQUEST_LOGIN_RESPONSE = 100;
+    private HashMap<String, Button> mButtonMap = new HashMap<String, Button>();
+
+    private static final String A_LOGIN = "LOGIN";
+    private static final String A_PLAN = "PLAN";
+    private static final String A_BEGIN = "BEGIN";
+    private static final String A_COLLECT = "COLLECT";
+    private static final String A_COMPLETE = "COMPLETE";
+    private static final String A_MONITOR = "MONITOR";
+    private static final String A_ANALYZE ="ANALYZE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,30 +37,39 @@ public class JavaTheHutt extends AppCompatActivity implements View.OnClickListen
 
         mListView = (ViewGroup) findViewById(R.id.list);
 
-        addDemo("Login", LoginActivity.class);
-        addDemo("Plan Route", MapsActivity.class);
-        addDemo("Begin Trip", BeginTripActivity.class);
-        addDemo("Collect Data", CollectDataActivity.class);
-        addDemo("Complete Trip", CompleteTripActivity.class);
-        addDemo("Monitor Trip", MonitorTripActivity.class);
-        addDemo("Analyze Trips", AnalTripsActivity.class);
-        MapDataSingleton.getInstance(JavaTheHutt.this);
+        addDemo(A_LOGIN, LoginActivity.class);
+        addDemo(A_PLAN, MapsActivity.class);
+        addDemo(A_BEGIN, BeginTripActivity.class);
+        addDemo(A_COLLECT, CollectDataActivity.class);
+        addDemo(A_COMPLETE, CompleteTripActivity.class);
+        addDemo(A_MONITOR, MonitorTripActivity.class);
+        addDemo(A_ANALYZE, AnalTripsActivity.class);
+
+        mButtonMap.get(A_LOGIN).setEnabled(true);
     }
 
     private void addDemo(String demoName, Class<? extends Activity> activityClass) {
         Button b = new Button(this);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT);
         b.setLayoutParams(layoutParams);
         b.setText(demoName);
         b.setTag(activityClass);
         b.setOnClickListener(this);
+        b.setEnabled(false);
         mListView.addView(b);
+        mButtonMap.put(demoName, b);
     }
 
     @Override
     public void onClick(View view) {
         Class activityClass = (Class) view.getTag();
-        startActivity(new Intent(this, activityClass));
+        if (LoginActivity.class == activityClass) {
+            startActivityForResult(new Intent(this, activityClass), REQUEST_LOGIN_RESPONSE);
+        }
+        else {
+            startActivity(new Intent(this, activityClass));
+        }
     }
 
     @Override
@@ -72,5 +92,26 @@ public class JavaTheHutt extends AppCompatActivity implements View.OnClickListen
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != Activity.RESULT_OK) {
+            return;
+        }
+
+        if (requestCode == REQUEST_LOGIN_RESPONSE) {
+            if (data == null) {
+                return;
+            }
+
+            if (true == LoginActivity.wasLoginValidated(data)) {
+                for(Button btn: mButtonMap.values()) {
+                    btn.setEnabled(true);
+                }
+                mButtonMap.get(A_ANALYZE).setEnabled(false);
+            }
+        }
+
     }
 }

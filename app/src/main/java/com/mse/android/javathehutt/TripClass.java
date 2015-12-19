@@ -1,6 +1,9 @@
 package com.mse.android.javathehutt;
 import com.google.android.gms.maps.model.LatLng;
 
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * Created by Bill on 12/18/15.
  */
@@ -16,6 +19,42 @@ public class TripClass {
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+    private Integer mCrewSize;
+    private Date mDepartDate;
+    private Date mReturnDate;
+    private String mReason;
+
+    public String getReason() {
+        return mReason;
+    }
+
+    public void setReason(String mReason) {
+        this.mReason = mReason;
+    }
+
+    public Integer getCrewSize() {
+        return mCrewSize;
+    }
+
+    public void setCrewSize(Integer mCrewSize) {
+        this.mCrewSize = mCrewSize;
+    }
+
+    public Date getDepartDate() {
+        return mDepartDate;
+    }
+
+    public void setDepartDate(Date mDepartDate) {
+        this.mDepartDate = mDepartDate;
+    }
+
+    public Date getReturnDate() {
+        return mReturnDate;
+    }
+
+    public void setReturnDate(Date mReturnDate) {
+        this.mReturnDate = mReturnDate;
     }
 
     public void setVesselName(String vesselName) {
