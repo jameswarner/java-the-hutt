@@ -49,11 +49,12 @@ public class CompleteTripActivity extends AppCompatActivity {
 
         updateUI();
     }
+
     public void onTripCompleteSubmit(View view) {
         TripClass trip = MapDataSingleton.getInstance(CompleteTripActivity.this).
                 getTrip(MapDataSingleton.getInstance(CompleteTripActivity.this).getLoginVesselname());
         if (null != trip) {
-            mRetDate.setText(ret_date.getMonth() + "/" + ret_date.getDate() + "/" + ret_date.getYear());
+            mRetDate.setText(ret_date.getMonth() + "/" + ret_date.getDate() + "/" + (ret_date.getYear()+1900));
             mRetTime.setText(ret_date.getHours() + ":" + ret_date.getMinutes());
             trip.setReturnDate(ret_date);
             trip.setmTripComplete(true);
@@ -80,7 +81,8 @@ public class CompleteTripActivity extends AppCompatActivity {
             Date dep_date = trip.getDepartDate();
             mDepDate.setText(dep_date.getMonth()+1 + "/" + dep_date.getDate() + "/" + dep_date.getYear());
             mDepTime.setText(dep_date.getHours() + ":" + dep_date.getMinutes());
-            mRetDate.setText(ret_date.getMonth()+1 + "/" + ret_date.getDate() + "/" + ret_date.getYear());
+            Log.d("Complete Plan", "ret_data year is " + ret_date.getYear());
+            mRetDate.setText(ret_date.getMonth()+1 + "/" + ret_date.getDate() + "/" + (ret_date.getYear()+1900));
             mRetTime.setText(ret_date.getHours() + ":" + ret_date.getMinutes());
 
             mTripType.setText(trip.getReason());

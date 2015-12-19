@@ -1,6 +1,7 @@
 package com.mse.android.javathehutt;
 import com.google.android.gms.maps.model.LatLng;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -12,6 +13,15 @@ public class TripClass {
     private LatLng destinationPosition;
     private LatLng departurePosition;
     private boolean completed;
+    private ArrayList<SitRepClass> sitRepList;
+
+    public ArrayList<SitRepClass> getSitRepList() {
+        return sitRepList;
+    }
+
+    public void setSitRepList(ArrayList<SitRepClass> sitRepList) {
+        this.sitRepList = sitRepList;
+    }
 
     public boolean isCompleted() {
         return completed;
@@ -105,5 +115,6 @@ public class TripClass {
         destinationPosition = new LatLng(0.0,0.0);
         departurePosition = new LatLng(0.0,0.0);
         setmTripComplete(false);
+        sitRepList = new ArrayList<>();
     }
 }
