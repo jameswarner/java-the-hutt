@@ -75,6 +75,7 @@ import java.util.UUID;
     private MapDataSingleton(Context inputContext)
     {
         context = inputContext;
+        trips = new ArrayList<>();
     }
 
 }
