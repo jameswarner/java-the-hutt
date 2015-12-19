@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -84,7 +85,9 @@ public class BeginTripActivity extends AppCompatActivity {
             String crew_size = crewSize.getText().toString();
             trip.setCrewSize(Integer.parseInt(crew_size));
             trip.setReason(mTripType.getSelectedItem().toString());
+            Log.d("Begin Submit", "dep is " + dep.toString());
             trip.setDepartDate(dep);
+            Log.d("Begin Submit", "ret is " + ret.toString());
             trip.setReturnDate(ret);
         }
 
