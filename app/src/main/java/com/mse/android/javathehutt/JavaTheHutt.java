@@ -120,7 +120,7 @@ public class JavaTheHutt extends AppCompatActivity implements View.OnClickListen
     private void addDemo(String demoName, Class<? extends Activity> activityClass) {
         Button b = new Button(this);
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
+                125);
         b.setLayoutParams(layoutParams);
         b.setText(demoName);
         b.setTag(activityClass);
