@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -74,7 +75,6 @@ public class BeginTripActivity extends AppCompatActivity {
 
     public void showRetTimePickerDialog(View view) {
         DialogFragment frag = new TimePickerFragment(mRetTime, ret);
-        System.out.println("showRetTimePickerDialog date = "+ret);
         frag.show(getSupportFragmentManager(), "timePicker");
     }
 
@@ -85,8 +85,6 @@ public class BeginTripActivity extends AppCompatActivity {
             String crew_size = crewSize.getText().toString();
             trip.setCrewSize(Integer.parseInt(crew_size));
             trip.setReason(mTripType.getSelectedItem().toString());
-            System.out.println("onTripBeginSubmitView dep date = " + dep.toString());
-            System.out.println("onTripBeginSubmitView ret date = " + ret.toString());
             trip.setDepartDate(dep);
             trip.setReturnDate(ret);
         }

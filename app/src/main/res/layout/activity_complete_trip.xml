@@ -243,6 +243,6 @@
         android:width="200dp"
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
-        android:onClick="onTripcompleteSubmit"/>
+        android:onClick="onTripCompleteSubmit"/>
 
 </LinearLayout>
